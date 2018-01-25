@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 from sys import argv
-import socket
 
 if len(argv)>3 or len(argv)<2:
     print("USAGE: command #IP #PORT (Port is optional, port 22 will be used by default)")
@@ -9,6 +8,9 @@ if len(argv)>3 or len(argv)<2:
 ip_port=[]
 for i in range(1,len(argv)):
     ip_port.append(argv[i])
+
+if len(ip_port)==1:
+    ip_port.append('22')
 
 ip_port=tuple(ip_port)
 
@@ -26,6 +28,7 @@ def port_check(port2ch):
         return False
 
 def connect_port(ip,port):
+    import socket
     sock = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
     sock.settimeout(10)
     result = sock.connect_ex((str(ip),int(port)))
@@ -42,11 +45,13 @@ connectisok = {
 
 def con_wo_port(): print("Run connect_port(ip_port[0],'22') which is Run connect_port(%s,'22')") % (ip_port[0])
 
+#An example only if ip_port[1] not in list/tuple range
 try:
     def con_w_port(): print("Run connect_port(ip_port[0],ip_port[1]) which is Run connect_port(%s,%s)") % (ip_port[0],ip_port[1])
 except:
     pass
 
+#Not necessary , 1 function can be called as tuple already occupied with needed arguments
 {
     '1': con_wo_port,
     '2': con_w_port
