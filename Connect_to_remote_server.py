@@ -1,6 +1,19 @@
 #!/usr/bin/env python
 from sys import argv
 
+#ip='1.1.1.1'
+#print(ip)
+#Split the IP
+#ip=ip.split('.')
+#print(ip)
+#Join the IP
+#ip='.'.join(ip)
+#print(ip)
+#Replace . with : in ip variable
+#print(ip.replace('.',':'))
+#1:1:1:1
+
+
 if len(argv)>3 or len(argv)<2:
     print("USAGE: command #IP #PORT (Port is optional, port 22 will be used by default)")
     exit()
