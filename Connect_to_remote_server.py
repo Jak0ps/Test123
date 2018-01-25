@@ -1,5 +1,6 @@
 #!/usr/bin/env python
 from sys import argv
+import socket
 
 if len(argv)>3 or len(argv)<2:
     print("USAGE: command #IP #PORT (Port is optional, port 22 will be used by default)")
